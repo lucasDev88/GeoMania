@@ -1,0 +1,176 @@
+[
+  {
+    "id": "povos-tradicionais",
+    "titulo": "Povos indígenas e comunidades tradicionais",
+    "periodo": "Passado e presente",
+    "formaProducao": "Produções diversificadas; caça, pesca, coleta, agricultura e manejo conforme o território",
+    "recursos": [
+      "Água",
+      "florestas",
+      "fauna",
+      "solo",
+      "plantas"
+    ],
+    "apropriacao": "Uso baseado em conhecimentos locais e regras culturais; não tratar esses povos como um bloco único",
+    "tecnica": "Conhecimentos do território, ciclos de plantio, pesca e manejo; práticas variam entre povos e lugares.",
+    "usos": [
+      "Alimentação por pesca, coleta e agricultura conforme cada território",
+      "Materiais, moradia e práticas culturais"
+    ],
+    "transformacoes": [
+      "Manejo, conservação, mobilidade, territorialidade e conflitos pelo acesso"
+    ],
+    "fontes": [
+      3
+    ]
+  },
+  {
+    "id": "sociedades-agrarias",
+    "titulo": "Sociedades agrárias antigas",
+    "periodo": "Antiguidade, em diferentes regiões",
+    "formaProducao": "Agricultura, criação de animais, tributos e obras coletivas",
+    "recursos": [
+      "Solo",
+      "água",
+      "madeira",
+      "pedra",
+      "metais"
+    ],
+    "apropriacao": "Irrigação, abertura de áreas agrícolas, mineração e construção",
+    "tecnica": "Canais de irrigação, ferramentas agrícolas e obras hidráulicas.",
+    "usos": [
+      "Irrigação e produção de alimentos",
+      "Construção de cidades e obras coletivas"
+    ],
+    "transformacoes": [
+      "Crescimento urbano, obras hidráulicas, alteração de paisagens"
+    ],
+    "fontes": [
+      1,
+      6
+    ]
+  },
+  {
+    "id": "europa-medieval",
+    "titulo": "Europa feudal / sociedades agrárias medievais",
+    "periodo": "Europa, aproximadamente séculos V a XV",
+    "formaProducao": "Produção rural baseada na terra; artesanato e comércio regional",
+    "recursos": [
+      "Terra",
+      "florestas",
+      "água",
+      "madeira",
+      "minérios"
+    ],
+    "apropriacao": "Cultivo, pastagens, uso de florestas, moinhos e extração local",
+    "tecnica": "Arados, moinhos de água e vento e técnicas artesanais.",
+    "usos": [
+      "Cultivo e criação de animais",
+      "Moinhos, artesanato e abastecimento local"
+    ],
+    "transformacoes": [
+      "Paisagem agrária, relações de acesso à terra e pressão sobre florestas"
+    ],
+    "fontes": [
+      1
+    ]
+  },
+  {
+    "id": "colonizacao",
+    "titulo": "Expansão mercantil e colonização",
+    "periodo": "A partir do século XV",
+    "formaProducao": "Comércio de longa distância, plantation, mineração e trabalho compulsório em muitos territórios coloniais",
+    "recursos": [
+      "Metais",
+      "madeira",
+      "solo fértil",
+      "água",
+      "produtos tropicais"
+    ],
+    "apropriacao": "Apropriação territorial voltada à exportação e circulação mercantil",
+    "tecnica": "Navegação oceânica, engenhos e técnicas de mineração.",
+    "usos": [
+      "Produção agrícola para exportação",
+      "Construção naval, mineração e comércio de longa distância"
+    ],
+    "transformacoes": [
+      "Monoculturas, mineração, desmatamento, integração desigual de territórios"
+    ],
+    "fontes": [
+      1
+    ]
+  },
+  {
+    "id": "industrializacao",
+    "titulo": "Capitalismo industrial",
+    "periodo": "Séculos XVIII e XIX, com ritmos regionais",
+    "formaProducao": "Produção fabril, mecanização, urbanização e mercado ampliado",
+    "recursos": [
+      "Carvão",
+      "ferro",
+      "água; depois petróleo e outros minerais"
+    ],
+    "apropriacao": "Extração em escala crescente para energia, máquinas, transporte e infraestrutura",
+    "tecnica": "Máquinas a vapor, mecanização fabril e siderurgia.",
+    "usos": [
+      "Máquinas a vapor e produção fabril",
+      "Siderurgia, ferrovias e infraestrutura urbana"
+    ],
+    "transformacoes": [
+      "Poluição, cidades industriais, expansão ferroviária e aumento da demanda material"
+    ],
+    "fontes": [
+      4
+    ]
+  },
+  {
+    "id": "globalizacao",
+    "titulo": "Capitalismo contemporâneo / globalização",
+    "periodo": "Séculos XX e XXI",
+    "formaProducao": "Produção em cadeias globais, consumo em massa e alta intensidade tecnológica",
+    "recursos": [
+      "Petróleo",
+      "gás",
+      "minerais estratégicos",
+      "água",
+      "solo",
+      "biomassa"
+    ],
+    "apropriacao": "Extração e transformação conectadas a redes globais de produção e consumo",
+    "tecnica": "Motores, redes elétricas, mecanização e tecnologias digitais.",
+    "usos": [
+      "Transporte, petroquímica e energia",
+      "Alimentos, equipamentos eletrônicos e bens de consumo"
+    ],
+    "transformacoes": [
+      "Mudanças climáticas, perda de biodiversidade, resíduos e disputas de acesso"
+    ],
+    "fontes": [
+      5
+    ]
+  },
+  {
+    "id": "transicao",
+    "titulo": "Transição e novas estratégias",
+    "periodo": "Debates e práticas do presente",
+    "formaProducao": "Economia circular, energias renováveis, gestão integrada e inovação",
+    "recursos": [
+      "Sol",
+      "vento",
+      "água",
+      "materiais reciclados e recursos já extraídos"
+    ],
+    "apropriacao": "Busca por reduzir extração virgem, desperdício e impactos",
+    "tecnica": "Reuso, reciclagem, energia solar e eólica e restauração de ecossistemas.",
+    "usos": [
+      "Geração de energia renovável",
+      "Reaproveitamento de materiais e redução do desperdício"
+    ],
+    "transformacoes": [
+      "Descarbonização, eficiência, conservação, restauração e justiça no acesso"
+    ],
+    "fontes": [
+      5
+    ]
+  }
+]

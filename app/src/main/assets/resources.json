@@ -1,0 +1,83 @@
+[
+  {
+    "id": "agua",
+    "titulo": "Água",
+    "descricao": "Sustenta a vida, a agricultura e muitas atividades produtivas. Sua disponibilidade depende dos ciclos naturais e das formas de distribuição e uso.",
+    "usos": [
+      "Abastecimento e irrigação",
+      "Indústria e geração de energia"
+    ],
+    "cuidado": "Acesso à água, qualidade e disputa entre usos precisam ser considerados juntos.",
+    "fontes": [
+      6
+    ]
+  },
+  {
+    "id": "solo",
+    "titulo": "Solo",
+    "descricao": "É a base de grande parte da produção de alimentos. Forma-se lentamente e reúne minerais, matéria orgânica, água e organismos.",
+    "usos": [
+      "Agricultura e pastagens",
+      "Suporte à vegetação"
+    ],
+    "cuidado": "Erosão, contaminação e manejo inadequado podem comprometer sua fertilidade.",
+    "fontes": [
+      6
+    ]
+  },
+  {
+    "id": "florestas",
+    "titulo": "Florestas e madeira",
+    "descricao": "Florestas oferecem materiais e alimentos e participam da regulação da água e do clima. Também são territórios de diferentes povos.",
+    "usos": [
+      "Madeira para construção e energia",
+      "Alimentos, fibras e manejo comunitário"
+    ],
+    "cuidado": "Conservar exige considerar biodiversidade, ritmo de extração e direitos territoriais.",
+    "fontes": [
+      3,
+      5
+    ]
+  },
+  {
+    "id": "minerais",
+    "titulo": "Minerais",
+    "descricao": "São usados em construções, máquinas e equipamentos. A extração liga territórios produtores a redes de transformação e consumo.",
+    "usos": [
+      "Metais em ferramentas e infraestrutura",
+      "Componentes de equipamentos eletrônicos"
+    ],
+    "cuidado": "Mineração demanda gestão de rejeitos, água, impactos territoriais e condições de trabalho.",
+    "fontes": [
+      5
+    ]
+  },
+  {
+    "id": "biomassa",
+    "titulo": "Biomassa",
+    "descricao": "Matéria de origem biológica, como madeira e resíduos agrícolas, que pode ser usada como material ou fonte de energia.",
+    "usos": [
+      "Lenha e carvão vegetal",
+      "Biocombustíveis e aproveitamento de resíduos"
+    ],
+    "cuidado": "Ser renovável não elimina impactos: manejo, uso da terra e emissões devem ser avaliados.",
+    "fontes": [
+      4,
+      5
+    ]
+  },
+  {
+    "id": "fosseis",
+    "titulo": "Combustíveis fósseis",
+    "descricao": "Carvão mineral, petróleo e gás natural formaram-se em escalas geológicas e não se renovam no ritmo do consumo humano.",
+    "usos": [
+      "Energia para indústria e transporte",
+      "Matérias-primas petroquímicas"
+    ],
+    "cuidado": "Sua queima emite gases de efeito estufa. Reduzir a dependência envolve mudanças técnicas e sociais.",
+    "fontes": [
+      4,
+      5
+    ]
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "titulo": "IBGE - Manual Técnico de Uso da Terra (2013)",
+    "url": "https://www.ibge.gov.br/geociencias/metodos-e-outros-documentos-de-referencia/revista-e-manuais-tecnicos/15826-manual-tecnico-em-geociencias.html?edicao=15986"
+  },
+  {
+    "id": 2,
+    "titulo": "FAO / IFAD - Land and natural resources, Rural Development Report 2016",
+    "url": "https://www.fao.org/family-farming/detail/en/c/449607/"
+  },
+  {
+    "id": 3,
+    "titulo": "UNESCO - Indigenous and local knowledge / biodiversity and sustainable resource management",
+    "url": "https://www.unesco.org/en/links/ipbes"
+  },
+  {
+    "id": 4,
+    "titulo": "Our World in Data - How have the world’s energy sources changed over the last two centuries?",
+    "url": "https://ourworldindata.org/global-energy-200-years"
+  },
+  {
+    "id": 5,
+    "titulo": "UNEP / International Resource Panel - Global Resources Outlook 2024",
+    "url": "https://www.unep.org/pt-br/resources/Global-Resource-Outlook-2024"
+  },
+  {
+    "id": 6,
+    "titulo": "FAO - Land, soil, water and the Sustainable Development Goals",
+    "url": "https://www.fao.org/land-water/overview/Land-soil-water-and-the-sustainable-development-goals/"
+  },
+  {
+    "id": 9,
+    "titulo": "IBGE - Recursos naturais e meio ambiente, Anuário Estatístico do Brasil",
+    "url": "https://anuario.ibge.gov.br/2023/territorio/recursos-naturais-e-meio-ambiente.html"
+  }
+]

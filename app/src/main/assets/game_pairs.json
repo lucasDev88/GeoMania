@@ -1,0 +1,50 @@
+[
+  {
+    "pairId": "par-1",
+    "recursoOuContexto": "Água + sociedade agrária",
+    "usoOuApropriacao": "Irrigação e produção agrícola",
+    "explicacao": "O controle e a distribuição da água ampliaram a capacidade de cultivo e ajudaram a organizar territórios agrícolas.",
+    "periodoId": "sociedades-agrarias",
+    "recursoId": "agua"
+  },
+  {
+    "pairId": "par-2",
+    "recursoOuContexto": "Madeira + expansão mercantil",
+    "usoOuApropriacao": "Construção naval, energia e abertura de áreas",
+    "explicacao": "A madeira teve múltiplos usos e sua demanda cresceu com transportes, construção e expansão territorial.",
+    "periodoId": "colonizacao",
+    "recursoId": "florestas"
+  },
+  {
+    "pairId": "par-3",
+    "recursoOuContexto": "Metais + colonização/mineração",
+    "usoOuApropriacao": "Extração voltada a circuitos comerciais",
+    "explicacao": "Mineração e controle de territórios conectaram recursos locais a redes comerciais de longa distância.",
+    "periodoId": "colonizacao",
+    "recursoId": "minerais"
+  },
+  {
+    "pairId": "par-4",
+    "recursoOuContexto": "Carvão + Revolução Industrial",
+    "usoOuApropriacao": "Máquinas a vapor, fábricas e ferrovias",
+    "explicacao": "O carvão tornou-se uma fonte central de energia industrial e ajudou a ampliar a escala da produção [4].",
+    "periodoId": "industrializacao",
+    "recursoId": "fosseis"
+  },
+  {
+    "pairId": "par-5",
+    "recursoOuContexto": "Petróleo + século XX/contemporâneo",
+    "usoOuApropriacao": "Transporte, petroquímica e energia",
+    "explicacao": "O petróleo passou a integrar cadeias produtivas e sistemas de transporte em escala global.",
+    "periodoId": "globalizacao",
+    "recursoId": "fosseis"
+  },
+  {
+    "pairId": "par-6",
+    "recursoOuContexto": "Solo + produção agroalimentar",
+    "usoOuApropriacao": "Agricultura e alimentos",
+    "explicacao": "Solo e água sustentam a produção de alimentos; sua gestão afeta produtividade e conservação [6].",
+    "periodoId": "sociedades-agrarias",
+    "recursoId": "solo"
+  }
+]
