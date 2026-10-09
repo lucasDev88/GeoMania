@@ -10,8 +10,10 @@ class ContentRepository(private val context: Context) {
         context.assets.open(name).bufferedReader().use { Json.decodeFromString<T>(it.readText()) }
 
     suspend fun load(): Conteudo = withContext(Dispatchers.IO) {
-        Conteudo(read("periods.json"), read("resources.json"), read("game_pairs.json"), read("sources.json"), read("learning.json"), read("earth_choices.json"))
+        Conteudo(read("periods.json"), read("resources.json"), read("game_pairs.json"), read("sources.json"), read("learning.json"), read("earth_choices.json"), read("expedition.json"))
             .also { content ->
+                content.expedicao.validate()
+                require(content.expedicao.missoes.all { m -> m.fontes.all { id -> content.fontes.any { it.id == id } } })
                 content.escolhas.validate()
                 require(content.escolhas.fases.all { phase -> phase.fontes.all { id -> content.fontes.any { it.id == id } } })
                 require(content.pares.size == 6)

@@ -1,6 +1,12 @@
 # Geo Mania
 
-Aplicativo educacional Android sobre **Recursos naturais: apropriação e usos**, baseado no documento de arquitetura desta pasta. Implementação nativa em Kotlin e Jetpack Compose, com conteúdo, GeoMatch e Escolhas da Terra offline.
+Aplicativo educacional Android sobre **Recursos naturais: apropriação e usos**, baseado no documento de arquitetura desta pasta. Implementação nativa em Kotlin e Jetpack Compose, com conteúdo, GeoMatch, Escolhas da Terra e GeoExpedição offline.
+
+## Entrega atual — 0.6.0
+
+APK: `entrega/GeoMania-0.6.0-debug.apk`. Inclui Camo, o mascote camaleão, e GeoExpedição: mapa interativo, oito locais, três missões e 24 pistas. A Home apresenta os três jogos. Veja `docs/GEOEXPEDICAO.md` para regras e roteiro de demonstração. Instale como atualização sem desinstalar o app anterior.
+
+Animações da versão 0.6.0: Camo interativo, cenário ambiente, cartões e telas em movimento, giro 3D no GeoMatch, indicadores animados e comemorações com partículas. Detalhes e conferência no aparelho em `docs/ANIMACOES.md`.
 
 ## Abrir e compilar
 
@@ -14,7 +20,11 @@ No PowerShell, com `JAVA_HOME` configurado e `local.properties` apontando para o
 
 APK: `app/build/outputs/apk/debug/app-debug.apk`. É uma versão de desenvolvimento para testes e apresentação, não uma publicação em loja.
 
-Cópia pronta para transferir: `entrega/GeoMania-debug.apk`. O usuário confirmou em 28/09/2026 que a versão 0.1.0 funcionou no celular. A versão 0.2.0 acrescenta Escolhas da Terra e precisa ser conferida novamente no aparelho; os resultados automatizados estão em `docs/VALIDACAO.md`.
+Cópia pronta para transferir: `entrega/GeoMania-debug.apk`. O usuário confirmou em 28/09/2026 que a versão 0.1.0 funcionou no celular. A versão 0.2.0 acrescentou Escolhas da Terra; os resultados por versão e as conferências manuais estão em `docs/VALIDACAO.md`.
+
+A versão 0.5.0 incorpora o mascote ao ícone adaptável, apresenta navegação por abas e aprimora contraste, leitura por voz e andamento das decisões. A 0.4.0 introduziu o Camo e a GeoExpedição com oito locais e três missões. O mascote está em `app/src/main/res/drawable-nodpi/camo_mascot.png`. Confira `docs/GEOEXPEDICAO.md` e `docs/VALIDACAO.md`.
+
+A versão 0.3.0 redesenha a Home com paisagem vetorial, atalhos para os jogos e painel de recorde. A linha do tempo apresenta etapas conectadas, resumos dos sete contextos e detalhes com recursos em etiquetas, perguntas de reflexão e navegação anterior/próxima. APK específico: `entrega/GeoMania-0.3.0-debug.apk`.
 
 Nesta máquina, foi preparado um SDK local em `.tools/android-sdk`. As ferramentas e caches ficam fora do código versionável. O Java encontrado é `C:/Users/Lucas/.jdks/ms-21.0.10`; configure `JAVA_HOME` para ele se o terminal não localizar Java.
 
@@ -25,7 +35,7 @@ Nesta máquina, foi preparado um SDK local em `.tools/android-sdk`. As ferrament
 - `app/src/main/java/br/com/geomania/game`: regras puras e estado da partida no ViewModel.
 - `app/src/main/java/br/com/geomania/ui`: navegação e telas Compose.
 - `app/src/test`: testes de regras do jogo.
-- `docs/PLANO_3_DIAS.md`: plano vigente de 27 a 29/09, escopo e critérios de entrega.
+- `docs/PLANO_3_DIAS.md`: plano original e atualização do prazo final para 09/10.
 - `docs/VALIDACAO.md`: verificações realizadas e roteiro de testes manuais.
 - `docs/DEMONSTRACAO.md`: apresentação de 3–5 minutos.
 - `docs/INSTALAR_SEM_USB.md`: transferência e instalação manual no celular.

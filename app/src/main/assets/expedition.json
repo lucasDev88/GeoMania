@@ -1,0 +1,296 @@
+{
+  "introducao": "Explore o Vale das Conexões com Camo, o camaleão investigador. Visite os locais, leia as pistas e trace no mapa a conexão que resolve cada caso. O território, os registros e as amostras são fictícios.",
+  "lugares": [
+    {
+      "id": "nascente",
+      "nome": "Nascente",
+      "tipo": "agua",
+      "x": 0.16,
+      "y": 0.12
+    },
+    {
+      "id": "floresta",
+      "nome": "Floresta",
+      "tipo": "floresta",
+      "x": 0.63,
+      "y": 0.12
+    },
+    {
+      "id": "estrada",
+      "nome": "Estrada",
+      "tipo": "estrada",
+      "x": 0.65,
+      "y": 0.3
+    },
+    {
+      "id": "mina",
+      "nome": "Mina",
+      "tipo": "mina",
+      "x": 0.87,
+      "y": 0.39
+    },
+    {
+      "id": "plantacao",
+      "nome": "Plantação",
+      "tipo": "plantacao",
+      "x": 0.17,
+      "y": 0.43
+    },
+    {
+      "id": "fabrica",
+      "nome": "Fábrica",
+      "tipo": "fabrica",
+      "x": 0.68,
+      "y": 0.55
+    },
+    {
+      "id": "rio",
+      "nome": "Rio",
+      "tipo": "agua",
+      "x": 0.31,
+      "y": 0.7
+    },
+    {
+      "id": "cidade",
+      "nome": "Cidade",
+      "tipo": "cidade",
+      "x": 0.74,
+      "y": 0.88
+    }
+  ],
+  "caminhos": [
+    {
+      "de": "cidade",
+      "para": "rio"
+    },
+    {
+      "de": "cidade",
+      "para": "fabrica"
+    },
+    {
+      "de": "rio",
+      "para": "plantacao"
+    },
+    {
+      "de": "plantacao",
+      "para": "nascente"
+    },
+    {
+      "de": "plantacao",
+      "para": "estrada"
+    },
+    {
+      "de": "estrada",
+      "para": "floresta"
+    },
+    {
+      "de": "estrada",
+      "para": "mina"
+    },
+    {
+      "de": "estrada",
+      "para": "fabrica"
+    }
+  ],
+  "missoes": [
+    {
+      "id": "agua",
+      "titulo": "O mistério do rio",
+      "objetivo": "Depois de uma chuva forte, a água que chega à cidade mudou. Descubra a origem do material e marque o caminho até os moradores.",
+      "instrucao": "Marque três locais: origem do material → trecho do rio que o recebe → cidade afetada. A correnteza segue da nascente em direção à cidade.",
+      "pistas": [
+        {
+          "local": "cidade",
+          "titulo": "Relato dos moradores",
+          "texto": "Neste caso fictício, a água ficou turva depois da chuva. O registro da coleta mostra material chegando pelo rio, antes da captação."
+        },
+        {
+          "local": "rio",
+          "titulo": "O que a correnteza trouxe",
+          "texto": "As amostras deste cenário mostram solo e resíduos agrícolas entrando no trecho abaixo da plantação e seguindo para a cidade."
+        },
+        {
+          "local": "plantacao",
+          "titulo": "O canal de escoamento",
+          "texto": "O terreno tem pouca cobertura perto do canal. Na chuva do caso, água carregou solo e resíduos da plantação para o rio."
+        },
+        {
+          "local": "fabrica",
+          "titulo": "Uma hipótese descartada",
+          "texto": "Os registros fictícios mostram saída de água tratada, sem o material observado na amostra do rio. A proximidade da fábrica, sozinha, não comprova a origem."
+        },
+        {
+          "local": "nascente",
+          "titulo": "A montante",
+          "texto": "A amostra da nascente, coletada antes do trecho da plantação, não contém o material investigado. A posição no rio ajuda a comparar as pistas."
+        },
+        {
+          "local": "mina",
+          "titulo": "Outro material",
+          "texto": "A equipe do caso encontrou rochas no depósito da mina. Elas não correspondem ao material das amostras usadas nesta missão."
+        },
+        {
+          "local": "floresta",
+          "titulo": "Cobertura do terreno",
+          "texto": "Neste trecho do cenário, a vegetação cobre o solo. A equipe não encontrou ali o canal que levou o material investigado ao rio."
+        },
+        {
+          "local": "estrada",
+          "titulo": "O registro da chuva",
+          "texto": "O diário local confirma a chuva forte antes da mudança da água. A estrada serve para deslocamento, mas não explica sozinha a origem do material."
+        }
+      ],
+      "essenciais": [
+        "plantacao",
+        "rio",
+        "cidade",
+        "fabrica"
+      ],
+      "rotas": [
+        [
+          "plantacao",
+          "rio",
+          "cidade"
+        ]
+      ],
+      "dica": "Compare a amostra do rio com o canal da plantação e verifique os registros da fábrica. Depois siga a direção da água.",
+      "conclusao": "Caso resolvido: no cenário, o material saiu da plantação, entrou no rio e chegou à cidade. Uso do solo, chuva e direção da água conectam territórios. A fábrica próxima foi investigada, mas suas pistas não correspondiam ao caso. A conclusão vale para esta história fictícia, não para qualquer rio real.",
+      "fontes": [
+        6,
+        1
+      ]
+    },
+    {
+      "id": "floresta",
+      "titulo": "A floresta fragmentada",
+      "objetivo": "O mapa antigo mostrava uma faixa contínua de vegetação. Agora há dois trechos separados. Investigue qual mudança criou essa divisão.",
+      "instrucao": "Marque dois locais: intervenção que cortou a vegetação → floresta afetada. A linha marcada representa causa e efeito, não o caminho de Camo.",
+      "pistas": [
+        {
+          "local": "cidade",
+          "titulo": "Mapas de duas épocas",
+          "texto": "O mapa antigo do caso mostra vegetação contínua. O novo mostra uma faixa aberta cortando essa área, depois da construção de uma via."
+        },
+        {
+          "local": "floresta",
+          "titulo": "Dois trechos separados",
+          "texto": "No local, Camo encontra vegetação nos dois lados da faixa aberta. O relatório fictício registra a interrupção da ligação entre esses trechos."
+        },
+        {
+          "local": "estrada",
+          "titulo": "A faixa recém-aberta",
+          "texto": "O diário de obras do caso registra retirada de vegetação para abrir esta estrada justamente entre os trechos antes conectados."
+        },
+        {
+          "local": "mina",
+          "titulo": "Uma atividade mais antiga",
+          "texto": "Neste cenário, a área da mina não mudou entre os dois mapas. A existência de mineração não prova que ela criou a divisão observada."
+        },
+        {
+          "local": "plantacao",
+          "titulo": "Os limites do cultivo",
+          "texto": "Os mapas usados na missão mostram a plantação com os mesmos limites antes e depois da separação da floresta."
+        },
+        {
+          "local": "fabrica",
+          "titulo": "A localização da obra",
+          "texto": "O registro desta fábrica indica uma área distante da faixa investigada. A pista relevante deve combinar localização e momento da mudança."
+        },
+        {
+          "local": "rio",
+          "titulo": "Uma conexão diferente",
+          "texto": "O curso do rio não mudou nos mapas do caso. A nova faixa aberta tem a forma da estrada, não do canal do rio."
+        },
+        {
+          "local": "nascente",
+          "titulo": "A vegetação ao redor",
+          "texto": "A nascente continua cercada de vegetação nos registros. Essa pista ajuda a distinguir a mudança recente de elementos que já existiam."
+        }
+      ],
+      "essenciais": [
+        "cidade",
+        "floresta",
+        "estrada"
+      ],
+      "rotas": [
+        [
+          "estrada",
+          "floresta"
+        ]
+      ],
+      "dica": "Compare o mapa antigo da cidade com o diário de obras da estrada. Procure a intervenção feita entre os dois registros.",
+      "conclusao": "Caso resolvido: a abertura da estrada separou os trechos de floresta neste território fictício. Infraestrutura muda o uso do espaço e pode interromper conexões da vegetação. Comparar localização, data e evidências permite explicar a mudança sem atribuí-la automaticamente à atividade mais próxima.",
+      "fontes": [
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "id": "recursos",
+      "titulo": "A cidade e seus recursos",
+      "objetivo": "A escola recebeu mesas metálicas. Descubra a cadeia que conecta os materiais dessas mesas à cidade e marque sua trajetória produtiva.",
+      "instrucao": "Marque três locais: onde a matéria-prima é extraída → onde ela é transformada → onde o produto é usado.",
+      "pistas": [
+        {
+          "local": "cidade",
+          "titulo": "As mesas da escola",
+          "texto": "O comprovante fictício de entrega informa que as mesas foram feitas com o lote metálico M7, vindo da fábrica deste mapa."
+        },
+        {
+          "local": "fabrica",
+          "titulo": "Do minério ao produto",
+          "texto": "O registro do cenário conecta o lote M7 às mesas. Esta fábrica transforma o material recebido da mina em componentes metálicos para a escola."
+        },
+        {
+          "local": "mina",
+          "titulo": "A origem do lote",
+          "texto": "O registro de saída do caso identifica o minério do lote M7, enviado à fábrica para transformação. É a origem documentada desta cadeia."
+        },
+        {
+          "local": "estrada",
+          "titulo": "O transporte",
+          "texto": "Os veículos do cenário usam a estrada para transportar materiais. Transporte liga as etapas, mas esta missão pede extração, transformação e uso."
+        },
+        {
+          "local": "plantacao",
+          "titulo": "Outra cadeia",
+          "texto": "O registro da plantação trata de alimentos para a cidade. Ele não corresponde ao lote de material metálico investigado."
+        },
+        {
+          "local": "floresta",
+          "titulo": "Materiais diferentes",
+          "texto": "Há madeira usada em outros produtos do cenário. O comprovante das mesas investigadas, porém, identifica componentes metálicos do lote M7."
+        },
+        {
+          "local": "rio",
+          "titulo": "Água na produção",
+          "texto": "A água tem usos produtivos e de abastecimento. Essa relação importa, mas não identifica a origem do material metálico pedido nesta missão."
+        },
+        {
+          "local": "nascente",
+          "titulo": "O abastecimento",
+          "texto": "A nascente participa do sistema de água do território. A missão atual acompanha a matéria-prima das mesas, não a rede de abastecimento."
+        }
+      ],
+      "essenciais": [
+        "cidade",
+        "fabrica",
+        "mina"
+      ],
+      "rotas": [
+        [
+          "mina",
+          "fabrica",
+          "cidade"
+        ]
+      ],
+      "dica": "Siga o código M7: registro de extração na mina, transformação na fábrica e comprovante de entrega na escola.",
+      "conclusao": "Caso resolvido: mina → fábrica → cidade. Um objeto cotidiano conecta extração, transformação, transporte e consumo. Os benefícios e os impactos dessa produção acontecem em diferentes locais, mesmo quando o consumidor só vê o produto final.",
+      "fontes": [
+        1,
+        5
+      ]
+    }
+  ]
+}

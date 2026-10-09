@@ -1,6 +1,8 @@
 # Geo Mania em três dias
 
-Plano vigente atualizado em 28/09/2026. Prazo comprimido para três dias totais, preservando o início em 27/09 e antecipando a entrega para **29/09/2026**. Substitui o plano de cinco dias.
+Atualização em **09/10/2026**: o usuário informou que hoje é o último dia e incluiu explicitamente Camo, GeoExpedição, ícone adaptável e redondo com Camo, abas de navegação, acessibilidade e animações. A entrega atual é a versão 0.6.0 com os três jogos; o roteiro abaixo registra o planejamento anterior. Entrega final: APK 0.6.0 compilado com Camo no ícone, quatro abas e ajustes de contraste e acessibilidade. Conferência no aparelho fica registrada como pendente em `VALIDACAO.md`. Detalhes em `GEOEXPEDICAO.md`.
+
+Plano original atualizado em 28/09/2026. Prazo comprimido para três dias totais, preservando o início em 27/09 e antecipando a entrega para **29/09/2026**. Substitui o plano de cinco dias.
 
 O usuário confirmou em 28/09 que a primeira versão funcionou no celular. Isso valida o teste inicial informado; a nova versão com Escolhas da Terra precisa de nova conferência.
 
@@ -23,6 +25,6 @@ O jogador pode entrar ao final da linha do tempo, após o último detalhe histó
 1. Compilar e testar a versão com os dois jogos.
 2. Instalar como atualização sobre a versão anterior, sem desinstalar, para conferir a manutenção do recorde.
 3. Conferir as 16 situações e identificar eventuais dificuldades de leitura no celular.
-4. Corrigir problemas do percurso principal e ensaiar a demonstração. Novos modos de jogo ficam fora deste prazo.
+4. Corrigir problemas do percurso principal e ensaiar a demonstração. O escopo foi ampliado em 09/10 para incluir GeoExpedição, conforme solicitado.
 
 O plano é um roteiro de execução nesta conversa, não uma automação. Os testes pendentes estão em `VALIDACAO.md`.

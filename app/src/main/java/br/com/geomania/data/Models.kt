@@ -7,7 +7,8 @@ data class Periodo(
     val id: String, val titulo: String, val periodo: String,
     val formaProducao: String, val recursos: List<String>,
     val apropriacao: String, val tecnica: String, val usos: List<String>,
-    val transformacoes: List<String>, val fontes: List<Int>
+    val transformacoes: List<String>, val fontes: List<Int>,
+    val resumo: String = "", val pergunta: String = ""
 )
 @Serializable
 data class Recurso(
@@ -28,5 +29,6 @@ data class Learning(val tema: String, val pergunta: String, val conceito: String
 data class Conteudo(
     val periodos: List<Periodo>, val recursos: List<Recurso>,
     val pares: List<GamePair>, val fontes: List<Fonte>, val learning: Learning,
-    val escolhas: br.com.geomania.choices.EarthContent
+    val escolhas: br.com.geomania.choices.EarthContent,
+    val expedicao: br.com.geomania.expedition.ExpeditionContent
 )

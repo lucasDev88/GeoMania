@@ -1,0 +1,3 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/camo_mascot" android:width="68dp" android:height="68dp" android:gravity="center" />
+</layer-list>

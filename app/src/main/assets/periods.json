@@ -22,7 +22,9 @@
     ],
     "fontes": [
       3
-    ]
+    ],
+    "resumo": "Território, conhecimentos e formas diversas de viver com a natureza.",
+    "pergunta": "Como as regras de acesso e os conhecimentos de cada povo influenciam o manejo do território?"
   },
   {
     "id": "sociedades-agrarias",
@@ -48,7 +50,9 @@
     "fontes": [
       1,
       6
-    ]
+    ],
+    "resumo": "Solo e água conectam produção de alimentos, trabalho e vida coletiva.",
+    "pergunta": "Quem decide como distribuir a água quando diferentes grupos dependem do mesmo rio?"
   },
   {
     "id": "europa-medieval",
@@ -73,7 +77,9 @@
     ],
     "fontes": [
       1
-    ]
+    ],
+    "resumo": "A terra ocupa o centro da produção rural e das relações de acesso.",
+    "pergunta": "Como o controle da terra interfere na vida de quem trabalha nela?"
   },
   {
     "id": "colonizacao",
@@ -98,7 +104,9 @@
     ],
     "fontes": [
       1
-    ]
+    ],
+    "resumo": "Recursos e territórios passam a integrar redes mercantis de longa distância.",
+    "pergunta": "Quem recebe os benefícios da exportação e quem suporta os custos da extração?"
   },
   {
     "id": "industrializacao",
@@ -108,7 +116,8 @@
     "recursos": [
       "Carvão",
       "ferro",
-      "água; depois petróleo e outros minerais"
+      "água",
+      "petróleo e outros minerais em períodos posteriores"
     ],
     "apropriacao": "Extração em escala crescente para energia, máquinas, transporte e infraestrutura",
     "tecnica": "Máquinas a vapor, mecanização fabril e siderurgia.",
@@ -121,7 +130,9 @@
     ],
     "fontes": [
       4
-    ]
+    ],
+    "resumo": "Energia e máquinas ampliam a escala da produção e transformam as cidades.",
+    "pergunta": "Aumentar a produção significa necessariamente melhorar a vida de todos?"
   },
   {
     "id": "globalizacao",
@@ -147,7 +158,9 @@
     ],
     "fontes": [
       5
-    ]
+    ],
+    "resumo": "O consumo em um lugar se conecta à extração e ao trabalho em outros.",
+    "pergunta": "Que territórios e recursos estão ligados a um produto que você usa diariamente?"
   },
   {
     "id": "transicao",
@@ -171,6 +184,8 @@
     ],
     "fontes": [
       5
-    ]
+    ],
+    "resumo": "Reuso, eficiência e novas fontes de energia mudam a forma de utilizar materiais.",
+    "pergunta": "Como reduzir a extração e o desperdício garantindo acesso às necessidades básicas?"
   }
 ]

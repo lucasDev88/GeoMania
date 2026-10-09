@@ -1,9 +1,11 @@
 package br.com.geomania.ui
 
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
+import androidx.compose.animation.*
+import androidx.compose.animation.core.tween
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,9 +13,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
@@ -27,6 +26,7 @@ import androidx.navigation.compose.*
 import br.com.geomania.data.*
 import br.com.geomania.game.GameViewModel
 import br.com.geomania.choices.ChoicesViewModel
+import br.com.geomania.expedition.ExpeditionViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,12 +38,43 @@ fun GeoManiaApp(vm: AppViewModel = viewModel()) {
     val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
     val entry by nav.currentBackStackEntryAsState()
     val route = entry?.destination?.route ?: "home"
+    val motion = LocalMotionEnabled.current
     Scaffold(topBar = {
-        TopAppBar(title = { Text("Geo Mania", fontWeight = FontWeight.Bold) }, navigationIcon = {
+        TopAppBar(title = { Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+            Surface(shape = CircleShape, color = MaterialTheme.colorScheme.primaryContainer) {
+                CamoMascot(Modifier.size(38.dp).padding(3.dp))
+            }
+            Column(verticalArrangement = Arrangement.spacedBy(1.dp)) {
+                Text("Geo Mania", fontWeight = FontWeight.Bold)
+                Text("EXPLORE • APRENDA • JOGUE", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        } }, navigationIcon = {
             if (route != "home") TextButton(onClick = {
-                if (route == "choices") backDispatcher?.onBackPressed() else nav.popBackStack()
+                if (route == "choices" || route == "expedition") backDispatcher?.onBackPressed() else nav.popBackStack()
             }) { Text("Voltar") }
         }, actions = { if (route != "about") TextButton(onClick = { nav.navigate("about") { launchSingleTop = true } }) { Text("Fontes") } })
+    }, bottomBar = {
+        val tabs = listOf(
+            Triple("home", "⌂", "Início"), Triple("timeline", "↟", "História"),
+            Triple("resources", "◈", "Recursos"), Triple("expedition", "⌖", "Mapa")
+        )
+        if (route in setOf("home", "timeline", "resources", "expedition")) {
+            NavigationBar(containerColor = MaterialTheme.colorScheme.surface) {
+                tabs.forEach { (destination, glyph, label) ->
+                    NavigationBarItem(
+                        selected = route == destination,
+                        onClick = { if (route != destination) nav.navigate(destination) {
+                            popUpTo("home") { saveState = true }
+                            launchSingleTop = true
+                            restoreState = true
+                        } },
+                        icon = { Text(glyph, style = MaterialTheme.typography.titleLarge) },
+                        label = { Text(label) },
+                        alwaysShowLabel = true
+                    )
+                }
+            }
+        }
     }) { padding ->
         Box(Modifier.fillMaxSize().padding(padding), contentAlignment = Alignment.TopCenter) {
             val data = content
@@ -55,21 +86,25 @@ fun GeoManiaApp(vm: AppViewModel = viewModel()) {
                     }
                 }
             } else {
-                NavHost(nav, startDestination = "home", modifier = Modifier.widthIn(max = 840.dp).fillMaxSize()) {
+                NavHost(nav, startDestination = "home", modifier = Modifier.widthIn(max = 840.dp).fillMaxSize(),
+                    enterTransition = { if (motion) fadeIn(tween(320)) + slideInHorizontally(tween(420)) { it/9 } + scaleIn(tween(420), initialScale = .97f) else EnterTransition.None },
+                    exitTransition = { if (motion) fadeOut(tween(180)) + slideOutHorizontally(tween(300)) { -it/12 } else ExitTransition.None },
+                    popEnterTransition = { if (motion) fadeIn(tween(320)) + slideInHorizontally(tween(420)) { -it/9 } else EnterTransition.None },
+                    popExitTransition = { if (motion) fadeOut(tween(180)) + slideOutHorizontally(tween(300)) { it/12 } else ExitTransition.None }) {
                     composable("home") { HomeScreen(data, stats, error) { nav.navigate(it) } }
                     composable("timeline") {
-                        LazyColumn(contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-                            item { Heading("Uma natureza, muitas histórias", "EXPLORAR") }
-                            item { Note(data.learning.aviso) }
-                            items(data.periodos, key = { it.id }) { period ->
-                                NavigationCard(period.titulo, period.periodo) { nav.navigate("period/${period.id}") }
-                            }
-                            item { NavigationCard("Agora é sua vez: Escolhas da Terra", "Depois de explorar a história, decida como utilizar os recursos em quatro sociedades.") { nav.navigate("choices") } }
-                        }
+                        TimelineScreen(data, open = { nav.navigate("period/$it") }, play = { nav.navigate("choices") })
                     }
                     composable("period/{id}") { back ->
                         val period = data.periodos.find { it.id == back.arguments?.getString("id") }
                         if (period == null) Text("Contexto não encontrado.") else PeriodScreen(period,
+                            index = data.periodos.indexOf(period), total = data.periodos.size,
+                            previous = if (data.periodos.indexOf(period) == 0) null else ({
+                                val index = data.periodos.indexOf(period)
+                                nav.navigate("period/${data.periodos[index - 1].id}") {
+                                    popUpTo("period/{id}") { inclusive = true }
+                                }
+                            }),
                             sources = { nav.navigate("about") },
                             nextLabel = if (period == data.periodos.last()) "Jogar Escolhas da Terra" else "Próximo contexto",
                             next = {
@@ -100,6 +135,10 @@ fun GeoManiaApp(vm: AppViewModel = viewModel()) {
                         val choices: ChoicesViewModel = viewModel(factory = viewModelFactory { initializer { ChoicesViewModel(data.escolhas) } })
                         ChoicesScreen(choices) { nav.navigate("about") }
                     }
+                    composable("expedition") {
+                        val expedition: ExpeditionViewModel = viewModel(factory = viewModelFactory { initializer { ExpeditionViewModel(data.expedicao) } })
+                        ExpeditionScreen(expedition) { nav.navigate("about") }
+                    }
                     composable("about") { AboutScreen(data) }
                 }
             }
@@ -125,7 +164,7 @@ fun Note(text: String) {
 
 @Composable
 fun NavigationCard(title: String, subtitle: String, onClick: () -> Unit) {
-    OutlinedCard(onClick = onClick, modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(22.dp)) {
+    OutlinedCard(onClick = onClick, modifier = Modifier.fillMaxWidth().entranceMotion(1), shape = RoundedCornerShape(22.dp)) {
         Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Text(title, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold)
             Text(subtitle, style = MaterialTheme.typography.bodyLarge)
@@ -135,65 +174,10 @@ fun NavigationCard(title: String, subtitle: String, onClick: () -> Unit) {
 }
 
 @Composable
-private fun HomeScreen(data: Conteudo, stats: Estatisticas, error: String?, navigate: (String) -> Unit) {
-    LazyColumn(contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(18.dp)) {
-        item {
-            Surface(color = MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(28.dp)) {
-                Column(Modifier.padding(24.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                    Text("GEOGRAFIA • HISTÓRIA • NATUREZA", style = MaterialTheme.typography.labelMedium)
-                    Globe()
-                    Text(data.learning.tema, style = MaterialTheme.typography.headlineLarge, fontWeight = FontWeight.Bold)
-                    Text(data.learning.pergunta, style = MaterialTheme.typography.bodyLarge)
-                    FilledTonalButton(onClick = { navigate("timeline") }) { Text("Começar a explorar") }
-                }
-            }
-        }
-        item { Text(data.learning.conceito, style = MaterialTheme.typography.bodyLarge) }
-        item { NavigationCard("Escolhas da Terra", "Quatro fases, 16 decisões. Como sua sociedade vai utilizar a natureza?") { navigate("choices") } }
-        item { NavigationCard("GeoMatch", "Encontre 6 pares e relacione cada recurso ao seu uso histórico.") { navigate("game") } }
-        item { Note("Seu recorde: ${stats.recorde} pontos • ${stats.partidas} partidas concluídas") }
-        if (error != null) item { Text(error, color = MaterialTheme.colorScheme.error) }
-        item { NavigationCard("Recursos naturais", "Água, solo, florestas, minerais, biomassa e combustíveis fósseis.") { navigate("resources") } }
-        item { Note(data.learning.destaque) }
-        item { Text("Aprenda e jogue sem internet.", style = MaterialTheme.typography.labelLarge) }
-    }
-}
-
-@Composable
-private fun Globe() {
-    Canvas(Modifier.size(104.dp)) {
-        val center = Offset(size.width / 2, size.height / 2)
-        val r = size.minDimension * .46f
-        drawCircle(Color(0xFFDDEDBB), r, center)
-        drawCircle(Color(0xFF245D4B), r, center, style = Stroke(3.dp.toPx()))
-        drawOval(Color(0xFF245D4B), Offset(center.x - r * .48f, center.y - r),
-            androidx.compose.ui.geometry.Size(r * .96f, r * 2), style = Stroke(2.dp.toPx()))
-        drawLine(Color(0xFF245D4B), Offset(center.x - r, center.y), Offset(center.x + r, center.y), 2.dp.toPx())
-        drawLine(Color(0xFF245D4B), Offset(center.x - r * .86f, center.y - r * .5f), Offset(center.x + r * .86f, center.y - r * .5f), 2.dp.toPx())
-        drawLine(Color(0xFF245D4B), Offset(center.x - r * .86f, center.y + r * .5f), Offset(center.x + r * .86f, center.y + r * .5f), 2.dp.toPx())
-    }
-}
-
-@Composable
 private fun Section(title: String, text: String) {
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text(title, style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
         Text(text, style = MaterialTheme.typography.bodyLarge)
-    }
-}
-
-@Composable
-private fun PeriodScreen(period: Periodo, sources: () -> Unit, nextLabel: String, next: () -> Unit) {
-    LazyColumn(contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(24.dp)) {
-        item { Heading(period.titulo, period.periodo) }
-        item { Section("Organização da produção", period.formaProducao) }
-        item { Note("Recursos em destaque\n${period.recursos.joinToString(", ")}") }
-        item { Section("Acesso e apropriação", period.apropriacao) }
-        item { Section("Técnicas e conhecimentos", period.tecnica) }
-        item { Section("Usos", period.usos.joinToString("\n")) }
-        item { Section("Transformações e conflitos", period.transformacoes.joinToString("\n")) }
-        item { TextButton(onClick = sources) { Text("Referências temáticas: ${period.fontes.joinToString { "[$it]" }}") } }
-        item { Button(onClick = next, modifier = Modifier.fillMaxWidth()) { Text(nextLabel) } }
     }
 }
 
@@ -228,6 +212,6 @@ private fun AboutScreen(data: Conteudo) {
                 }
             }
         }
-        item { Text("Versão 0.2.0 • Sem cadastro e sem coleta de dados.\nRecorde e partidas ficam apenas neste aparelho.") }
+        item { Text("Versão 0.6.0 • Sem cadastro e sem coleta de dados.\nRecorde e partidas ficam apenas neste aparelho.") }
     }
 }

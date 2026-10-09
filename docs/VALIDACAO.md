@@ -1,5 +1,58 @@
 # Validação do Geo Mania
 
+## Versão 0.6.0 — animações (09/10/2026)
+
+Entradas com mola, deslocamento e escala; navegação com profundidade; cenário e Camo em movimento, saudação ao toque, giro em perspectiva no GeoMatch, indicadores graduais, correnteza no mapa, marcas com salto e comemorações de partículas. Detalhes em `ANIMACOES.md`.
+
+- [x] Compilação final: BUILD SUCCESSFUL em 09/10/2026, 24 testes JVM sem falhas e lint com zero erros e 13 avisos preexistentes de SDK, dependências e qualificador de ícone. Log: `.tools/motion-release-build.log`.
+- [x] APK 0.6.0, versionCode 6, assinatura válida e igual à 0.5.0, sete JSONs idênticos às fontes e sprite Camo preservado. Cópia final: `entrega/GeoMania-0.6.0-debug.apk`.
+- [ ] Conferir no celular: giro e fechamento de cartas, explicação após abertura, toque no Camo, viagem e chegada à nascente, barras e partículas nas três modalidades.
+- [ ] Desativar animações do Android e verificar estados imediatos e ausência de movimento ambiente; voltar ao app após pausa.
+
+Animações não alteram regras e valores; o leitor de tela recebe estados finais. O observador das configurações e o ciclo de vida controlam efeitos decorativos. A fluidez física e a aparência final permanecem dependentes da conferência no aparelho.
+
+
+## Versão 0.5.0 — identidade visual e acessibilidade (09/10/2026)
+
+A identidade do mascote agora aparece também no ícone adaptável e redondo de Android, com variante de ícone tradicional. A barra de navegação inferior oferece atalhos consistentes para Home, linha do tempo, recursos e mapa; o Camo aparece na barra superior e dá boas-vindas na Home. A paleta, as formas e os cartões ganham mais contraste e consistência. A GeoExpedição anuncia viagens e a localização atual ao leitor de tela e mantém o retrato dos oito destinos; Escolhas da Terra informa progresso como barra acessível.
+
+- [x] Implementado sem alterar conteúdo, decisões, regras ou referências das três missões.
+- [x] APK 0.5.0 gerado: `entrega/GeoMania-0.5.0-debug.apk`, versão de pacote 0.5.0 e code 5; ícones adaptável e redondo referenciados pelo manifesto e tema monocromático incluído.
+- [ ] Instalar como atualização; conferir o ícone adaptável e redondo no aparelho, sem desinstalar a versão anterior.
+- [ ] Conferir quatro abas, leitura pelo TalkBack, fonte ampliada, avanço das decisões e anúncio de chegada do Camo no mapa.
+- [ ] Revisar em tela pequena a arte e o texto de abertura da Home.
+
+`assembleDebug lintDebug`: BUILD SUCCESSFUL em 09/10/2026, zero erros e 13 avisos de atualizações SDK/dependências e configuração de ícone API 26. O APK foi assinado com a mesma chave da versão 0.4.0. Testes JVM não foram executados nesta atualização. O roteiro de GeoExpedição permanece em `GEOEXPEDICAO.md`.
+
+
+## Versão 0.4.0 — GeoExpedição e Camo (09/10/2026)
+
+Mapa esquemático fictício com oito locais, caminhos conectados, viagem animada de Camo, coleta de pistas ao chegar ao destino, caderno, dicas, marcação ordenada das conexões e conclusões. Três missões e 24 pistas; acesso pela Home junto aos outros dois jogos. Arte original do camaleão com transparência, incorporada localmente ao APK.
+
+- [x] Validação independente dos sete JSONs, lugares e referências.
+- [x] 24 testes JVM sem falhas: oito novos testes cobrem os 64 pares de destinos, coleta apenas no destino, comandos durante viagem, marcas em locais visitados, evidências obrigatórias, correção da ordem, três conclusões e progresso da sessão.
+- [x] Build final e lint: BUILD SUCCESSFUL em 09/10/2026, zero erros e 12 avisos de versões de dependências/SDK e configuração Android já existente. Log: `.tools/expedition-final-build.log`.
+- [x] Compilação do APK 0.4.0 com versionCode 4 e mesmo identificador. Os sete JSONs do APK são idênticos às fontes e a arte Camo está presente, RGBA 1254 × 1254, com alpha de 0 a 255.
+- [x] Assinatura debug válida e igual à versão 0.3.0; atualização compatível com preservação do DataStore.
+- [ ] Teste manual no aparelho da versão 0.4.0: instalação sobre a anterior, Home, mapa, toques, leitura, animação, dica, erro e correção da conexão, três conclusões.
+- [ ] Rotação durante viagem e marcação; botão Voltar e confirmação; saída e entrada no modo.
+- [ ] Fonte a 200%, tela pequena e modo avião; recorde anterior do GeoMatch.
+
+As conclusões ambientais pertencem a casos fictícios e não são medições ou provas sobre locais reais. As três missões têm respostas determinadas por suas pistas; Escolhas da Terra continua permitindo diferentes prioridades sem alternativa universalmente correta. A verificação automatizada não substitui a conferência visual no celular. Nenhum push foi realizado.
+
+
+## Versão 0.3.0 — Home e linha do tempo
+
+Home redesenhada em Compose, ilustração vetorial local sem download de imagens, cartões distintos dos dois jogos e painel do GeoMatch. Linha do tempo com sete etapas visuais, resumos, perguntas de reflexão, posição do contexto e navegação anterior/próxima. Textos específicos dos contextos permanecem em `periods.json`.
+
+- [x] JSONs: resumos e perguntas presentes nos sete contextos; referências e conteúdo dos jogos válidos.
+- [x] Build, testes JVM e lint da versão 0.3.0: compilação bem-sucedida, 16 testes sem falhas e lint sem erros em 28/09/2026. Conteúdo do APK conferido e assinatura igual à versão 0.2.0.
+- [ ] Verificação visual no celular: Home, etapas e detalhes em tela pequena e com fonte a 200%.
+- [ ] Abrir os dois jogos e biblioteca pela Home; conferir recorde após atualização.
+- [ ] Abrir todos os contextos; avançar, voltar e entrar no simulador pelo último contexto.
+
+O repositório `lucasDev88/GeoMania` foi acessado com sucesso em 28/09/2026 e corresponde ao remoto `origin`. As alterações desta etapa são locais; nenhum push foi realizado.
+
 ## Versão 0.2.0 e prazo de três dias
 
 Em 28/09/2026 o usuário confirmou que a versão anterior funcionou no seu celular. Modelo e versão Android não foram informados, nem a execução de todos os cenários abaixo. A confirmação se refere à versão 0.1.0; Escolhas da Terra exige novo teste no aparelho.

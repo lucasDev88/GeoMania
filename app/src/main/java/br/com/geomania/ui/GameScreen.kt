@@ -1,5 +1,10 @@
 package br.com.geomania.ui
 
+import androidx.compose.animation.core.*
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import kotlinx.coroutines.delay
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -25,6 +30,15 @@ import br.com.geomania.game.GameViewModel
 @Composable
 fun GameScreen(vm: GameViewModel, stats: Estatisticas) {
     val state by vm.state.collectAsStateWithLifecycle()
+    val motion = LocalMotionEnabled.current
+    var shownExplanation by remember { mutableStateOf<String?>(null) }
+    LaunchedEffect(state.explanation, motion) {
+        shownExplanation = null
+        if (state.explanation != null) {
+            if (motion) delay(540)
+            shownExplanation = state.explanation
+        }
+    }
     val saveStatus by vm.saveStatus.collectAsStateWithLifecycle()
     val lifecycle = LocalLifecycleOwner.current.lifecycle
     DisposableEffect(lifecycle, vm) {
@@ -46,6 +60,7 @@ fun GameScreen(vm: GameViewModel, stats: Estatisticas) {
             item {
                 Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)) {
                     Column(Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Celebration()
                         Text("Você conectou todas as histórias!", style = MaterialTheme.typography.headlineSmall)
                         Text("${state.score} pontos", style = MaterialTheme.typography.headlineLarge, fontWeight = FontWeight.Bold)
                         Text("Recorde salvo: ${stats.recorde} pontos")
@@ -58,9 +73,14 @@ fun GameScreen(vm: GameViewModel, stats: Estatisticas) {
         }
         items(state.cards.chunked(columns)) { row ->
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                row.forEach { card ->
+                row.forEach { card -> key(card.id) {
                     val matched = card.pairId in state.matchedPairs
                     val visible = matched || card.id in state.selected
+                    val turn by animateFloatAsState(if (visible) 180f else 0f,
+                        if (motion) tween(520, easing = FastOutSlowInEasing) else snap(), label = "Virar carta")
+                    val face by remember { derivedStateOf { turn >= 90f } }
+                    val scale by animateFloatAsState(if (matched) 1.035f else 1f,
+                        if (motion) spring(dampingRatio = .55f, stiffness = 270f) else snap(), label = "Par encontrado")
                     val position = state.cards.indexOf(card) + 1
                     val description = when {
                         matched -> "Par encontrado. ${card.text}"
@@ -70,21 +90,23 @@ fun GameScreen(vm: GameViewModel, stats: Estatisticas) {
                     OutlinedCard(
                         onClick = { vm.select(card.id) },
                         enabled = !state.blocked && !matched && card.id !in state.selected,
-                        modifier = Modifier.weight(1f).heightIn(min = 128.dp).semantics { contentDescription = description },
+                        modifier = Modifier.weight(1f).heightIn(min = 128.dp).graphicsLayer {
+                            rotationY = turn; cameraDistance = 14.dp.toPx(); scaleX = scale; scaleY = scale
+                        }.semantics { contentDescription = description },
                         shape = RoundedCornerShape(18.dp),
                         colors = CardDefaults.outlinedCardColors(
-                            containerColor = MaterialTheme.colorScheme.primary,
-                            contentColor = MaterialTheme.colorScheme.onPrimary,
-                            disabledContainerColor = if (visible) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.primary,
-                            disabledContentColor = if (visible) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onPrimary
+                            containerColor = if (face) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.primary,
+                            contentColor = if (face) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onPrimary,
+                            disabledContainerColor = if (face) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.primary,
+                            disabledContentColor = if (face) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onPrimary
                         )
                     ) {
-                        Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Column(Modifier.padding(14.dp).graphicsLayer { rotationY = if (face) 180f else 0f }.clearAndSetSemantics { }, verticalArrangement = Arrangement.spacedBy(8.dp)) {
                             Text(if (matched) "PAR ENCONTRADO" else "CARTA $position", style = MaterialTheme.typography.labelSmall)
-                            Text(if (visible) card.text else "?", style = if (visible) MaterialTheme.typography.bodyLarge else MaterialTheme.typography.headlineLarge)
+                            Text(if (face) card.text else "?", style = if (face) MaterialTheme.typography.bodyLarge else MaterialTheme.typography.headlineLarge)
                         }
                     }
-                }
+                } }
             }
         }
         item {
@@ -92,7 +114,7 @@ fun GameScreen(vm: GameViewModel, stats: Estatisticas) {
         }
         item { Text("Pontuação: 1.000 − 25 por tentativa além de 6 − 2 por segundo. Mínimo de 100 pontos.", style = MaterialTheme.typography.bodySmall) }
     }
-    state.explanation?.let { explanation ->
+    shownExplanation?.let { explanation ->
         AlertDialog(onDismissRequest = vm::dismissExplanation,
             title = { Text("Conexão encontrada!") }, text = { Text(explanation, Modifier.verticalScroll(rememberScrollState())) },
             confirmButton = { TextButton(onClick = vm::dismissExplanation) { Text(if (state.isFinished) "Ver resultado" else "Continuar") } })

@@ -1,6 +1,10 @@
 package br.com.geomania.ui
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.core.*
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import kotlin.math.roundToInt
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -10,7 +14,9 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.ProgressBarRangeInfo
 import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.progressBarRangeInfo
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -54,6 +60,7 @@ fun ChoicesScreen(vm: ChoicesViewModel, sources: () -> Unit) {
             item { IndicatorPanel(state.indicators, if (state.selected != null) state.history.last().before else phase.iniciais,
                 if (state.selected != null) "Efeito real desta escolha" else "Mudança desde o início") }
             if (state.finished) {
+                item { Celebration() }
                 item { Heading("Sua sociedade", "FASE CONCLUÍDA • 4/4 DECISÕES") }
                 item { Note(conclusion(state.indicators, phase.iniciais)) }
                 item { Text(phase.reflexao, style = MaterialTheme.typography.bodyLarge) }
@@ -81,6 +88,12 @@ fun ChoicesScreen(vm: ChoicesViewModel, sources: () -> Unit) {
             } else {
                 val decision = phase.decisoes[state.decision]
                 item { Text("Decisão ${state.decision + 1} de 4", style = MaterialTheme.typography.labelLarge) }
+                item {
+                    val progress = (state.decision + 1) / 4f
+                    LinearProgressIndicator(progress = { progress }, modifier = Modifier.fillMaxWidth().semantics {
+                        progressBarRangeInfo = ProgressBarRangeInfo(progress, 0f..1f)
+                    })
+                }
                 item { Text(decision.situacao, style = MaterialTheme.typography.headlineSmall) }
                 if (state.selected == null) {
                     itemsIndexed(decision.opcoes) { index, option ->
@@ -130,13 +143,18 @@ private fun effectText(delta: Indicators) = indicatorNames.zip(delta.values()).j
 
 @Composable
 private fun IndicatorPanel(current: Indicators, baseline: Indicators, label: String = "Mudança desde o início") {
-    OutlinedCard(Modifier.fillMaxWidth()) {
+    val motion = LocalMotionEnabled.current
+    OutlinedCard(Modifier.fillMaxWidth().entranceMotion()) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             Text(label, style = MaterialTheme.typography.labelLarge)
             val delta = (current - baseline).values()
             indicatorNames.zip(current.values()).forEachIndexed { index, (name, value) ->
-                Text("$name: $value/100 (${signed(delta[index])})", fontWeight = FontWeight.SemiBold)
-                LinearProgressIndicator(progress = { value / 100f }, modifier = Modifier.fillMaxWidth())
+                val animated by animateFloatAsState(value.toFloat(), if (motion) spring(dampingRatio = .85f, stiffness = 85f) else snap(), label = name)
+                Text("$name: ${animated.roundToInt().coerceIn(0,100)}/100 (${signed(delta[index])})", fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.clearAndSetSemantics { contentDescription = "$name: $value de 100, mudança ${signed(delta[index])}" })
+                LinearProgressIndicator(progress = { (animated / 100f).coerceIn(0f,1f) }, modifier = Modifier.fillMaxWidth().semantics {
+                    progressBarRangeInfo = ProgressBarRangeInfo(value/100f, 0f..1f)
+                })
             }
         }
     }

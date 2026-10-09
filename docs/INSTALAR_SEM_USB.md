@@ -2,7 +2,7 @@
 
 ## Instalação manual
 
-1. Localize o APK atual em `entrega/GeoMania-0.2.0-debug.apk` (também disponível como `GeoMania-debug.apk`). Instale como atualização sobre a versão anterior, sem desinstalar, para preservar o recorde do GeoMatch.
+1. Localize o APK atual em `entrega/GeoMania-0.6.0-debug.apk` (também disponível como `GeoMania-debug.apk`). Instale como atualização sobre a versão anterior, sem desinstalar, para preservar o recorde do GeoMatch.
 2. Transfira esse arquivo do computador para o celular usando um meio que você já utiliza, como armazenamento pessoal na nuvem ou transferência de arquivos pela rede. Nenhum arquivo é enviado automaticamente por este projeto.
 3. No celular, baixe o arquivo completo e abra-o pelo gerenciador de arquivos.
 4. Se o sistema solicitar, autorize a instalação por esse aplicativo de origem e confirme a instalação. Os nomes dos menus variam conforme o fabricante e a versão Android. Consulte as [orientações oficiais de instalação](https://support.google.com/pixelphone/answer/7391672?hl=pt-BR).

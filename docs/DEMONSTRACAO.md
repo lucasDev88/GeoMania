@@ -1,10 +1,12 @@
-# Demonstração do Geo Mania
+# Demonstração do Geo Mania — versão 0.6.0
 
-1. **30 segundos — início:** apresente o tema e pergunte quem controla e utiliza os recursos naturais.
-2. **1 minuto — linha do tempo:** abra sociedades agrárias e industrialização; compare água, técnicas, energia e transformações. Explique que diferentes formas de apropriação coexistem.
-3. **40 segundos — recursos:** abra solo e discuta produção de alimentos, manejo e conservação.
-4. **1 minuto — Escolhas da Terra:** avance até o botão ao final da linha do tempo, escolha Revolução Industrial e decida como explorar o carvão. Compare os indicadores e explique que ganhos produtivos têm custos sociais e ambientais. Mostre o resultado de quatro decisões e a possibilidade de tentar outras escolhas.
-5. **40 segundos — GeoMatch:** associe recurso/contexto e uso e leia uma explicação. É uma segunda forma de revisar o tema.
-6. **30 segundos — fontes:** mostre as referências e explique que o conteúdo é local. Demonstre em modo avião; apenas os links externos precisam de rede. Os indicadores do simulador são fictícios, não medições históricas.
+Roteiro de aproximadamente cinco minutos:
 
-Antes de apresentar: instalar o APK, abrir todas as telas, carregar o aparelho, desligar notificações e ensaiar uma partida. Não prometa abrir os sites das fontes offline.
+1. **30 segundos — Home:** apresente o tema, toque no Camo para cumprimentá-lo e mostre os três jogos.
+2. **40 segundos — linha do tempo:** compare sociedades agrárias e industrialização, destacando que formas de apropriação coexistem.
+3. **1 minuto — Escolhas da Terra:** escolha Revolução Industrial e decida como explorar o carvão. Explique os ganhos e custos; os indicadores são parâmetros fictícios.
+4. **2 minutos — GeoExpedição:** entre na missão da cidade e seus recursos. Visite fábrica e mina, leia os registros do lote M7 e observe Camo viajar pelos caminhos. Ative Marcar conexão, selecione Mina → Fábrica → Cidade e confira a conclusão. Explique extração, transformação e consumo. Mostre as outras missões: rio e floresta. O território e seus registros são fictícios.
+5. **30 segundos — GeoMatch:** mostre um par e sua explicação.
+6. **20 segundos — fontes:** mostre as referências; conteúdo e jogos funcionam em modo avião, os links externos precisam de rede.
+
+Antes de apresentar: instale o APK final como atualização, confira as telas e as três missões no aparelho, carregue o celular, desligue notificações e ensaie. A marcação no mapa relaciona locais; ela não precisa repetir os caminhos físicos percorridos por Camo.

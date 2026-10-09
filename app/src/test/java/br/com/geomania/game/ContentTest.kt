@@ -17,6 +17,7 @@ class ContentTest {
         val sources = read<List<Fonte>>("sources.json")
         val learning = read<Learning>("learning.json")
         assertEquals(7, periods.size)
+        assertTrue(periods.all { it.resumo.isNotBlank() && it.pergunta.isNotBlank() })
         assertEquals(6, resources.size)
         assertEquals(6, pairs.size)
         assertTrue(learning.aviso.contains("coexistem"))
